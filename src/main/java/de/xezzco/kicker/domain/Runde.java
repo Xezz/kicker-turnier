@@ -1,5 +1,8 @@
 package de.xezzco.kicker.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,36 +15,14 @@ import java.util.UUID;
  * Die Partien die an einer spezifischen Position gespielt werden
  */
 @Entity
+@Getter
+@Setter
 public class Runde {
 
     @Id
     @GeneratedValue
     private UUID rundeId;
-    @OneToMany(mappedBy = "partieId")
+    @OneToMany
     private Set<Partie> partienDerRunde;
     private int position;
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public UUID getRundeId() {
-        return rundeId;
-    }
-
-    public void setRundeId(UUID rundeId) {
-        this.rundeId = rundeId;
-    }
-
-    public Set<Partie> getPartienDerRunde() {
-        return partienDerRunde;
-    }
-
-    public void setPartienDerRunde(Set<Partie> partienDerRunde) {
-        this.partienDerRunde = partienDerRunde;
-    }
 }

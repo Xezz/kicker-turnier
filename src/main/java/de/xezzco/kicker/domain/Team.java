@@ -1,7 +1,12 @@
 package de.xezzco.kicker.domain;
 
-import javax.persistence.*;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Set;
 import java.util.UUID;
 
@@ -10,27 +15,13 @@ import java.util.UUID;
  * Der oder die Spieler die ein Team einer Partie sind
  */
 @Entity
+@Getter
+@Setter
 public class Team {
 
     @Id
     @GeneratedValue
     private UUID teamId;
-    @OneToMany(mappedBy = "spielerId")
+    @OneToMany
     private Set<Spieler> teamMitglieder;
-
-    public UUID getTeamId() {
-        return teamId;
-    }
-
-    public void setTeamId(UUID teamId) {
-        this.teamId = teamId;
-    }
-
-    public Set<Spieler> getTeamMitglieder() {
-        return teamMitglieder;
-    }
-
-    public void setTeamMitglieder(Set<Spieler> teamMitglieder) {
-        this.teamMitglieder = teamMitglieder;
-    }
 }

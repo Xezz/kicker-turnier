@@ -1,5 +1,8 @@
 package de.xezzco.kicker.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -12,6 +15,8 @@ import java.util.UUID;
  * (Besser reagieren, erste Wurf wohl eher direkt heim und auswärts, aber schlechter)
  */
 @Entity
+@Getter
+@Setter
 public class Partie {
 
     @Id
@@ -25,44 +30,4 @@ public class Partie {
     private Team auswaertsTeam;
     private int toreHeimTeam;
     private int toreAuswaertsTeam;
-
-    public UUID getPartieId() {
-        return partieId;
-    }
-
-    public void setPartieId(UUID partieId) {
-        this.partieId = partieId;
-    }
-
-    public int getToreHeimTeam() {
-        return toreHeimTeam;
-    }
-
-    public void setToreHeimTeam(int toreHeimTeam) {
-        this.toreHeimTeam = toreHeimTeam;
-    }
-
-    public int getToreAuswaertsTeam() {
-        return toreAuswaertsTeam;
-    }
-
-    public void setToreAuswaertsTeam(int toreAuswaertsTeam) {
-        this.toreAuswaertsTeam = toreAuswaertsTeam;
-    }
-/*
-    public Team getHeimTeam() {
-        return heimTeam;
-    }
-
-    public void setHeimTeam(Team heimTeam) {
-        this.heimTeam = heimTeam;
-    }
-
-    public Team getAuswaertsTeam() {
-        return auswaertsTeam;
-    }
-
-    public void setAuswaertsTeam(Team auswaertsTeam) {
-        this.auswaertsTeam = auswaertsTeam;
-    }*/
 }

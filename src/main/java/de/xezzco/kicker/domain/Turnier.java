@@ -1,9 +1,14 @@
 package de.xezzco.kicker.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
@@ -12,27 +17,15 @@ import java.util.UUID;
  * Der Turnier eines Turnier besteht aus einer Liste von Runden
  */
 @Entity
+@Getter
+@Setter
 public class Turnier {
 
     @Id
     @GeneratedValue
     private UUID turnierId;
-    @OneToMany(mappedBy = "rundeId")
+    @OneToMany
     private Set<Runde> runden;
-
-    public UUID getTurnierId() {
-        return turnierId;
-    }
-
-    public void setTurnierId(UUID turnierId) {
-        this.turnierId = turnierId;
-    }
-
-    public Set<Runde> getRunden() {
-        return runden;
-    }
-
-    public void setRunden(Set<Runde> runden) {
-        this.runden = runden;
-    }
+    @NotNull(message = "Ein gültiges Datum muss angegeben werden")
+    private Date ausrichtungsdatum;
 }
